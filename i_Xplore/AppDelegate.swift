@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var mapNavigationController: UINavigationController?
+    var navigationController: UINavigationController?
 
 
 
@@ -23,14 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mapNavigationController = UINavigationController(rootViewController: basicViewController)
         self.mapNavigationController?.navigationBarHidden = true
         
+        let landingViewController = LandingViewController(nibName:"LandingViewController",bundle:nil)
+        self.navigationController = UINavigationController(rootViewController: landingViewController)
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = self.mapNavigationController
+        self.window?.rootViewController = self.navigationController
         self.window?.makeKeyAndVisible()
 
         
         
         return true
     }
+    
+    func navigateToJournalNavigationController() {
+        window?.rootViewController = mapNavigationController
+    }
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
