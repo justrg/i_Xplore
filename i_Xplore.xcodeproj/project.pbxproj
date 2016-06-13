@@ -16,6 +16,7 @@
 		51117F461D0972E400C50D26 /* star_pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 51117F451D0972E400C50D26 /* star_pink.png */; };
 		51117F481D0972F500C50D26 /* star_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 51117F471D0972F500C50D26 /* star_black.png */; };
 		51117F751D099E9500C50D26 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51117F731D099E9500C50D26 /* CustomTableViewCell.swift */; };
+		512DC5251D0F25D70060ACAF /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512DC5241D0F25D70060ACAF /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		51117F451D0972E400C50D26 /* star_pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_pink.png; path = ../../../Downloads/star_pink.png; sourceTree = "<group>"; };
 		51117F471D0972F500C50D26 /* star_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_black.png; path = ../../../Downloads/star_black.png; sourceTree = "<group>"; };
 		51117F731D099E9500C50D26 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		512DC5241D0F25D70060ACAF /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		51117F201D087E6900C50D26 = {
 			isa = PBXGroup;
 			children = (
+				512DC5211D0F24AD0060ACAF /* Onboarding */,
 				51117F441D0972D700C50D26 /* images */,
 				51117F2B1D087E6900C50D26 /* i_Xplore */,
 				51117F2A1D087E6900C50D26 /* Products */,
@@ -82,6 +85,30 @@
 				51117F451D0972E400C50D26 /* star_pink.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		512DC5211D0F24AD0060ACAF /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				512DC5231D0F25070060ACAF /* Model Controllers */,
+				512DC5221D0F24FE0060ACAF /* Authentication */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		512DC5221D0F24FE0060ACAF /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		512DC5231D0F25070060ACAF /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				512DC5241D0F25D70060ACAF /* UserController.swift */,
+			);
+			name = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,6 +186,7 @@
 			files = (
 				51117F431D08841200C50D26 /* Place.swift in Sources */,
 				51117F2D1D087E6900C50D26 /* AppDelegate.swift in Sources */,
+				512DC5251D0F25D70060ACAF /* UserController.swift in Sources */,
 				51117F751D099E9500C50D26 /* CustomTableViewCell.swift in Sources */,
 				51117F401D087F2400C50D26 /* MapViewController.swift in Sources */,
 			);

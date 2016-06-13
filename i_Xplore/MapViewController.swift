@@ -137,13 +137,15 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        let pin = MKPinAnnotationView()
+        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
         if (annotation as! Place).favorite {
             pin.pinTintColor = UIColor.yellowColor()
         }
         else{
             pin.pinTintColor = UIColor.redColor()
         }
+        pin.canShowCallout = true
+        pin.animatesDrop = true
         return pin
     }
 
