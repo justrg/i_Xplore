@@ -16,7 +16,6 @@
 		51117F461D0972E400C50D26 /* star_pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 51117F451D0972E400C50D26 /* star_pink.png */; };
 		51117F481D0972F500C50D26 /* star_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 51117F471D0972F500C50D26 /* star_black.png */; };
 		51117F751D099E9500C50D26 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51117F731D099E9500C50D26 /* CustomTableViewCell.swift */; };
-		51117F761D099E9500C50D26 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51117F741D099E9500C50D26 /* CustomTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		51117F451D0972E400C50D26 /* star_pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_pink.png; path = ../../../Downloads/star_pink.png; sourceTree = "<group>"; };
 		51117F471D0972F500C50D26 /* star_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_black.png; path = ../../../Downloads/star_black.png; sourceTree = "<group>"; };
 		51117F731D099E9500C50D26 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		51117F741D099E9500C50D26 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +71,6 @@
 				51117F3F1D087F2400C50D26 /* MapViewController.xib */,
 				51117F421D08841200C50D26 /* Place.swift */,
 				51117F731D099E9500C50D26 /* CustomTableViewCell.swift */,
-				51117F741D099E9500C50D26 /* CustomTableViewCell.xib */,
 			);
 			path = i_Xplore;
 			sourceTree = "<group>";
@@ -147,7 +144,6 @@
 			files = (
 				51117F371D087E6900C50D26 /* LaunchScreen.storyboard in Resources */,
 				51117F411D087F2400C50D26 /* MapViewController.xib in Resources */,
-				51117F761D099E9500C50D26 /* CustomTableViewCell.xib in Resources */,
 				51117F481D0972F500C50D26 /* star_black.png in Resources */,
 				51117F341D087E6900C50D26 /* Assets.xcassets in Resources */,
 				51117F461D0972E400C50D26 /* star_pink.png in Resources */,
@@ -306,6 +302,7 @@
 				51117F3D1D087E6900C50D26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

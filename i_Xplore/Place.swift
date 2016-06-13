@@ -17,6 +17,7 @@ class Place: NSObject, MKAnnotation  {
     //var ratable:Bool = true
     var desc: String?
     var date: NSDate = NSDate()
+    var favorite: Bool = false
     
     class func placeList() -> [Place] {
         
@@ -35,19 +36,19 @@ class Place: NSObject, MKAnnotation  {
         let place3 = Place()
         place3.title = "Lion's Head"
         //place3.ratable = true
-        place3.logoURL = "https://pbs.twimg.com/profile_images/615938716800909312/Ail46JOW.jpg"
+        place3.logoURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Lion%27s_Head_from_Signal_Hill.jpg/1280px-Lion%27s_Head_from_Signal_Hill.jpg"
         place3.coordinate = CLLocationCoordinate2D(latitude: -33.934722,longitude: 18.389167)
         
         let place4 = Place()
         place4.title = "Never@Home"
         //place4.ratable = true
-        place4.logoURL = "http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-44613-256px.png"
+        place4.logoURL = "https://en.wikipedia.org/wiki/Chemistry#/media/File:Nuvola_apps_edu_science.png"
         place4.coordinate = CLLocationCoordinate2D(latitude: -33.907772,longitude: 18.40918)
         
         let place5 = Place()
         place5.title = "Boulder Beach"
         //place4.ratable = true
-        place5.logoURL = "http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-44613-256px.png"
+        place5.logoURL = "https://en.wikipedia.org/wiki/Chemistry#/media/File:Atom_diagram.png"
         place5.coordinate = CLLocationCoordinate2D(latitude: -34.1972,longitude: 18.4513)
         
         let place6 = Place()
