@@ -23,56 +23,27 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmf-1f-WJj">
-                        <rect key="frame" x="116" y="37" width="50" height="50"/>
-                        <state key="normal" image="star_black.png"/>
-                        <connections>
-                            <action selector="ratingMade:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kCJ-dA-pVj"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEV-sD-btF">
-                        <rect key="frame" x="161" y="37" width="50" height="50"/>
-                        <state key="normal" image="star_black.png"/>
-                        <connections>
-                            <action selector="ratingMade:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AvY-B4-HFc"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct9-Pi-WbL">
-                        <rect key="frame" x="206" y="37" width="50" height="50"/>
-                        <state key="normal" image="star_black.png"/>
-                        <connections>
-                            <action selector="ratingMade:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gPH-Q4-mcx"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oX-6f-3nD">
-                        <rect key="frame" x="251" y="37" width="50" height="50"/>
-                        <state key="normal" image="star_black.png"/>
-                        <connections>
-                            <action selector="ratingMade:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BSu-4z-lNo"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qe-X1-jfw">
-                        <rect key="frame" x="296" y="37" width="50" height="50"/>
-                        <state key="normal" image="star_black.png"/>
-                        <connections>
-                            <action selector="ratingMade:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aMW-kR-Gye"/>
-                        </connections>
-                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXx-kW-Me6">
+                        <rect key="frame" x="116" y="37" width="237" height="21"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Date">
+                                <attributes>
+                                    <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <font key="NSFont" size="17" name="Optima-Bold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="customImage" destination="2bL-Yp-oeP" id="i7u-Vc-TlU"/>
+                <outlet property="date" destination="bXx-kW-Me6" id="Ya5-MZ-ss3"/>
                 <outlet property="label" destination="mcM-PD-u1v" id="7Kv-Ct-8aa"/>
-                <outlet property="star1" destination="bmf-1f-WJj" id="vza-H8-Eb3"/>
-                <outlet property="star2" destination="LEV-sD-btF" id="Ocp-7b-84M"/>
-                <outlet property="star3" destination="Ct9-Pi-WbL" id="i4u-ea-CaF"/>
-                <outlet property="star4" destination="1oX-6f-3nD" id="SGa-uA-Uv0"/>
-                <outlet property="star5" destination="5Qe-X1-jfw" id="8mW-0N-A0b"/>
             </connections>
             <point key="canvasLocation" x="300.5" y="251"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="star_black.png" width="75" height="75"/>
-    </resources>
 </document>

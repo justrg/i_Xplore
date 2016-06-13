@@ -20,7 +20,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print("\(placeList)")
+       self.tableView.allowsMultipleSelectionDuringEditing = false
         
         setupMapView()
         setupTableView()
@@ -59,6 +59,13 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let place = placeList[indexPath.row]
         cell.label.text = place.title
         
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy HH:mm a"
+        dateFormatter.AMSymbol = "AM"
+        dateFormatter.PMSymbol = "PM"
+        var convertedDate = dateFormatter.stringFromDate(place.date)
+        cell.date.text = String(convertedDate)
+        
         //Account for online images vs local images
         if (place.logoURL != nil){
             cell.customImage.imageFromUrl(place.logoURL!)
@@ -66,7 +73,10 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         //Styling of table cells
         if indexPath.row % 2 == 1{
-            cell.backgroundColor = UIColor.lightGrayColor()
+            cell.backgroundColor = UIColor(red: 228/255, green: 229/255, blue: 224/255, alpha: 1.0) /* #e4e5e0  Very light gray color */
+                
+                //UIColor(red: 230/255, green: 231/255, blue: 247/255, alpha: 1.0) /* #e6e7f7 Light blue color*/
+                //UIColor(red: 228/255, green: 229/255, blue: 224/255, alpha: 1.0) /* #e4e5e0  Very light gray color */
         }
         return cell
     }
@@ -86,21 +96,32 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         //
         //        mapView.region.center.latitude = spot.coordinate.latitude
     }
-
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let place = placeList[indexPath.row]
-        
-        let row = indexPath.row
-        print ()
-        if place.ratable{
-            return 88
-        }
-        else{
-            
-            return 44
-        }
-        return 0
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            placeList.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        let place = placeList[indexPath.row]
+//        
+//        let row = indexPath.row
+//        print ()
+//        if place.ratable{
+//            return 88
+//        }
+//        else{
+//            
+//            return 44
+//        }
+//        return 0
+//    }
 
 }
 
