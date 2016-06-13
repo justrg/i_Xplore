@@ -150,7 +150,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let place = placeList[indexPath.row]
+        //let place = placeList[indexPath.row]
         
         
         return 88
