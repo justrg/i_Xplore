@@ -11,7 +11,7 @@ import MapKit
 
 class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate{
     
-    var placeList: [Place] = Place.placeList()
+    var placeList: [Place] = []
     
     
     @IBOutlet weak var mapView: MKMapView!
@@ -20,11 +20,31 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
        self.tableView.allowsMultipleSelectionDuringEditing = false
         
         mapView.delegate = self
         setupMapView()
         setupTableView()
+        
+        //let plusButtonFrame = CGRectMake(50, 50, 0, 0)
+        let plusButton = UIBarButtonItem(title: "+", style: .Done, target: self, action: "presentNewPlace")
+        //plusButton.title = "+"
+        //self.view.addSubview(plusButton)
+        self.navigationItem.rightBarButtonItem = plusButton
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        placeList = PlacesController.getPlaces()
+    }
+    
+    func presentNewPlace(){
+        let vc = NewPlaceViewController()
+        self.presentViewController(vc, animated: true, completion: nil)
+        print("Shit works man")
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,6 +79,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let place = placeList[indexPath.row]
         cell.label!.text = place.title
         
+        
         if place.favorite {
             cell.label?.textColor = UIColor.yellowColor()
         }
@@ -70,7 +91,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         dateFormatter.dateFormat = "MM/dd/yy HH:mm a"
         dateFormatter.AMSymbol = "AM"
         dateFormatter.PMSymbol = "PM"
-        let convertedDate = dateFormatter.stringFromDate(place.date)
+        let convertedDate = dateFormatter.stringFromDate(place.date!)
         cell.date!.text = String(convertedDate)
         
         //Account for online images vs local images

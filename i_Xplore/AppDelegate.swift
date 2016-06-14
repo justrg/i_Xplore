@@ -22,13 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let basicViewController = MapViewController(nibName: "MapViewController", bundle: nil)
         mapNavigationController = UINavigationController(rootViewController: basicViewController)
-        self.mapNavigationController?.navigationBarHidden = true
+        self.mapNavigationController?.navigationBarHidden = false
         
         let landingViewController = LandingViewController(nibName:"LandingViewController",bundle:nil)
         self.navigationController = UINavigationController(rootViewController: landingViewController)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = self.navigationController
+        self.window?.rootViewController = self.mapNavigationController
         self.window?.makeKeyAndVisible()
 
         

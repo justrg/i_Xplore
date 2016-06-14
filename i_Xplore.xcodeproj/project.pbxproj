@@ -23,6 +23,10 @@
 		512DC52D1D0F2DE40060ACAF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 512DC52B1D0F2DE40060ACAF /* LoginViewController.xib */; };
 		512DC5301D0F2E060060ACAF /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512DC52E1D0F2E060060ACAF /* RegistrationViewController.swift */; };
 		512DC5311D0F2E060060ACAF /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 512DC52F1D0F2E060060ACAF /* RegistrationViewController.xib */; };
+		512DC5541D1030F30060ACAF /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512DC5521D1030F30060ACAF /* NewPlaceViewController.swift */; };
+		512DC5551D1030F30060ACAF /* NewPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 512DC5531D1030F30060ACAF /* NewPlaceViewController.xib */; };
+		512DC5571D1042BD0060ACAF /* PlacesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512DC5561D1042BD0060ACAF /* PlacesController.swift */; };
+		512DC5591D1061050060ACAF /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512DC5581D1061050060ACAF /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		512DC52B1D0F2DE40060ACAF /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		512DC52E1D0F2E060060ACAF /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		512DC52F1D0F2E060060ACAF /* RegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
+		512DC5521D1030F30060ACAF /* NewPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
+		512DC5531D1030F30060ACAF /* NewPlaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPlaceViewController.xib; sourceTree = "<group>"; };
+		512DC5561D1042BD0060ACAF /* PlacesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesController.swift; path = i_Xplore/PlacesController.swift; sourceTree = "<group>"; };
+		512DC5581D1061050060ACAF /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,8 @@
 				51117F3F1D087F2400C50D26 /* MapViewController.xib */,
 				51117F421D08841200C50D26 /* Place.swift */,
 				51117F731D099E9500C50D26 /* CustomTableViewCell.swift */,
+				512DC5521D1030F30060ACAF /* NewPlaceViewController.swift */,
+				512DC5531D1030F30060ACAF /* NewPlaceViewController.xib */,
 			);
 			path = i_Xplore;
 			sourceTree = "<group>";
@@ -124,7 +134,9 @@
 		512DC5231D0F25070060ACAF /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				512DC5561D1042BD0060ACAF /* PlacesController.swift */,
 				512DC5241D0F25D70060ACAF /* UserController.swift */,
+				512DC5581D1061050060ACAF /* PersistenceManager.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -189,6 +201,7 @@
 			files = (
 				512DC5291D0F2DC90060ACAF /* LandingViewController.xib in Resources */,
 				512DC5311D0F2E060060ACAF /* RegistrationViewController.xib in Resources */,
+				512DC5551D1030F30060ACAF /* NewPlaceViewController.xib in Resources */,
 				51117F371D087E6900C50D26 /* LaunchScreen.storyboard in Resources */,
 				51117F411D087F2400C50D26 /* MapViewController.xib in Resources */,
 				51117F481D0972F500C50D26 /* star_black.png in Resources */,
@@ -212,6 +225,9 @@
 				512DC5251D0F25D70060ACAF /* UserController.swift in Sources */,
 				51117F751D099E9500C50D26 /* CustomTableViewCell.swift in Sources */,
 				512DC5281D0F2DC90060ACAF /* LandingViewController.swift in Sources */,
+				512DC5571D1042BD0060ACAF /* PlacesController.swift in Sources */,
+				512DC5541D1030F30060ACAF /* NewPlaceViewController.swift in Sources */,
+				512DC5591D1061050060ACAF /* PersistenceManager.swift in Sources */,
 				51117F401D087F2400C50D26 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
