@@ -42,38 +42,38 @@ class Place: NSObject, MKAnnotation  {
         let place4 = Place()
         place4.title = "Never@Home"
         //place4.ratable = true
-        place4.logoURL = "https://en.wikipedia.org/wiki/Chemistry#/media/File:Nuvola_apps_edu_science.png"
+        place4.logoURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Flag_of_Afghanistan_(1880%E2%80%931901).svg/2000px-Flag_of_Afghanistan_(1880%E2%80%931901).svg.png"
         place4.coordinate = CLLocationCoordinate2D(latitude: -33.907772,longitude: 18.40918)
         
         let place5 = Place()
         place5.title = "Boulder Beach"
         //place4.ratable = true
-        place5.logoURL = "https://en.wikipedia.org/wiki/Chemistry#/media/File:Atom_diagram.png"
+        place5.logoURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Boulders_Bay.jpg/1024px-Boulders_Bay.jpg"
         place5.coordinate = CLLocationCoordinate2D(latitude: -34.1972,longitude: 18.4513)
         
         let place6 = Place()
         place6.title = "Randy Warthog"
-        place6.logoURL = "http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-44613-256px.png"
+        place6.logoURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Flag_of_Afghanistan_(1880%E2%80%931901).svg/2000px-Flag_of_Afghanistan_(1880%E2%80%931901).svg.png"
         place6.coordinate = CLLocationCoordinate2D(latitude: -33.907772,longitude: 18.40918)
         
         let place7 = Place()
         place7.title = "Aquila Private Game Reserve"
-        place7.logoURL = "http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-44613-256px.png"
+        place7.logoURL = "https://www.cometocapetown.com/wp-content/gallery/aquila-reserve/andulela_aquila_house.jpg"
         place7.coordinate = CLLocationCoordinate2D(latitude: -33.3536,longitude: 19.9365)
         
         let place8 = Place()
         place8.title = "V&A Market"
-        place8.logoURL = "http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-44613-256px.png"
+        place8.logoURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Flag_of_Afghanistan_(1880%E2%80%931901).svg/2000px-Flag_of_Afghanistan_(1880%E2%80%931901).svg.png"
         place8.coordinate = CLLocationCoordinate2D(latitude: -33.9060766,longitude: 18.423153800000023)
         
         let place9 = Place()
         place9.title = "Shark Alley"
-        place9.logoURL = "http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-44613-256px.png"
+        place9.logoURL = "https://chasingpisces.files.wordpress.com/2009/11/south-africa-001.jpg"
         place9.coordinate = CLLocationCoordinate2D(latitude: -34.57697367552366,longitude: 19.345378875732422)
         
         let place10 = Place()
         place10.title = "University of Michigan"
-        place10.logoURL = "http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-44613-256px.png"
+        place10.logoURL = "https://en.wikipedia.org/wiki/University_of_Michigan#/media/File:Umichigan_color_seal.png"
         place10.coordinate = CLLocationCoordinate2D(latitude: 42.2780,longitude: -83.7382)
         
         

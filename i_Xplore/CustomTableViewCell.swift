@@ -28,7 +28,7 @@ class CustomTableViewCell: UITableViewCell {
         iView = UIImageView (frame: iVFrame)
         self.addSubview(iView!)
         
-        let labelFrame = CGRectMake(116, 8, 109, 21)
+        let labelFrame = CGRectMake(116, 8, 175, 21)
         label = UILabel(frame: labelFrame)
         self.addSubview(label!)
         
