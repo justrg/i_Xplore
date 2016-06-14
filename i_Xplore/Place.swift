@@ -64,12 +64,12 @@ class Place: NSObject, MKAnnotation  {
         let place8 = Place()
         place8.title = "V&A Market"
         place8.logoURL = "http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-44613-256px.png"
-        place8.coordinate = CLLocationCoordinate2D(latitude: -33.54266,longitude: 18.2457)
+        place8.coordinate = CLLocationCoordinate2D(latitude: -33.9060766,longitude: 18.423153800000023)
         
         let place9 = Place()
         place9.title = "Shark Alley"
         place9.logoURL = "http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-44613-256px.png"
-        place9.coordinate = CLLocationCoordinate2D(latitude: -34.4114,longitude: 19.2451)
+        place9.coordinate = CLLocationCoordinate2D(latitude: -34.57697367552366,longitude: 19.345378875732422)
         
         let place10 = Place()
         place10.title = "University of Michigan"
