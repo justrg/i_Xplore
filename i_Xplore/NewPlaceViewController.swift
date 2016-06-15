@@ -62,6 +62,7 @@ class NewPlaceViewController: UIViewController, CLLocationManagerDelegate {
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         latitudeField.text = String(format:"%f", locValue.latitude)
         longitudeField.text = String(format:"%f", locValue.longitude)
+        locationManager!.stopUpdatingLocation()
     }
 
 
