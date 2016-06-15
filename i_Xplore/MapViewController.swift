@@ -9,9 +9,10 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate{
+class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, CLLocationManagerDelegate{
     
     var placeList: [Place] = []
+    var locationManager: CLLocationManager?
     
     
     @IBOutlet weak var mapView: MKMapView!
@@ -21,7 +22,10 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        locationManager = CLLocationManager()
+        locationManager!.delegate = self
+        locationManager!.requestWhenInUseAuthorization()
+
         
        self.tableView.allowsMultipleSelectionDuringEditing = false
         
@@ -170,6 +174,16 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 //            return 44
 //        }
 //        return 0
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse {
+            if CLLocationManager.isMonitoringAvailableForClass(CLBeaconRegion.self) {
+                if CLLocationManager.isRangingAvailable() {
+                    // do stuff
+                }
+            }
+        }
     }
 
 }

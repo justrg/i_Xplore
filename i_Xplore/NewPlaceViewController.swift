@@ -44,7 +44,6 @@ class NewPlaceViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager = CLLocationManager()
         locationManager!.delegate = self
-        locationManager!.requestWhenInUseAuthorization()
         locationManager!.desiredAccuracy = kCLLocationAccuracyBest
         locationManager!.startUpdatingLocation()
 
@@ -56,15 +55,6 @@ class NewPlaceViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedWhenInUse {
-            if CLLocationManager.isMonitoringAvailableForClass(CLBeaconRegion.self) {
-                if CLLocationManager.isRangingAvailable() {
-                    // do stuff
-                }
-            }
-        }
-    }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
