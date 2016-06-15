@@ -11,16 +11,20 @@ import MapKit
 
 class Place: NSObject, MKAnnotation, NSCoding  {
     
-    var coordinate: CLLocationCoordinate2D
+    var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
     var title: String?
     var logoURL:String?
     var desc: String?
     var date: NSDate?
-    var favorite: Bool
+    var favorite: Bool = false
     
-    required init(title:String?, coordinate:CLLocationCoordinate2D?, logoURL:String?, desc:String?, date:NSDate?, favorite: Bool) {
+    override init()  {
+        
+    }
+    
+    required init(title:String?, coordinate: CLLocationCoordinate2D, logoURL:String?, desc:String?, date:NSDate?, favorite: Bool) {
         self.title = title
-        self.coordinate = coordinate!
+        self.coordinate = coordinate
         self.logoURL = logoURL
         self.desc = desc
         self.date = date
@@ -30,7 +34,8 @@ class Place: NSObject, MKAnnotation, NSCoding  {
     // MARK: - NSCoding
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.title, forKey: "title")
-        aCoder.encodeObject(self.coordinate as! AnyObject, forKey: "coordinate") //Not sure if that is right
+        aCoder.encodeObject(NSNumber(double: self.coordinate.latitude), forKey: "lat")
+        aCoder.encodeObject(NSNumber(double: self.coordinate.longitude), forKey: "log")
         aCoder.encodeObject(self.logoURL, forKey: "logoURL")
         aCoder.encodeObject(self.desc, forKey: "description")
         aCoder.encodeObject(self.date, forKey: "date")
@@ -40,11 +45,25 @@ class Place: NSObject, MKAnnotation, NSCoding  {
     required convenience init?(coder aDecoder: NSCoder) {
         
         let title = aDecoder.decodeObjectForKey("title") as? String
-        let coordinate = aDecoder.decodeObjectForKey("coordinate") as! CLLocationCoordinate2D
         let logoURL = aDecoder.decodeObjectForKey("logoURL") as? String
         let description = aDecoder.decodeObjectForKey("description") as? String
-        let date = aDecoder.decodeObjectForKey("date") as! NSDate
-        let favorite = aDecoder.decodeObjectForKey("favorite") as! Bool
+        let date = aDecoder.decodeObjectForKey("date") as? NSDate
+        
+        var favorite = false
+        if let favoriteObtainedFromPersistence = aDecoder.decodeObjectForKey("favorite") as? Bool {
+            favorite = favoriteObtainedFromPersistence
+        }
+        
+        let lat = aDecoder.decodeObjectForKey("lat") as? Double
+        let log = aDecoder.decodeObjectForKey("log") as? Double
+        var coordinate = CLLocationCoordinate2D()
+        if let latit = lat  {
+            coordinate.latitude = latit
+        }
+        if let longit = log {
+            coordinate.longitude = longit
+        }
+        
         
         self.init(title: title, coordinate: coordinate, logoURL: logoURL, desc: description, date: date, favorite: favorite)
         
@@ -53,31 +72,32 @@ class Place: NSObject, MKAnnotation, NSCoding  {
     class func placeList() -> [Place] {
         
         let place = Place(title: "Workshop 17", coordinate: CLLocationCoordinate2D(latitude: -33.906764,longitude: 18.4164983), logoURL: "https://avatars1.githubusercontent.com/u/7220596?v=3&s=200", desc: "xx", date: NSDate(), favorite: true)
+//        
+//        let place2 = Place(title: "Truth Coffee", coordinate: CLLocationCoordinate2D(latitude: -33.9281976,longitude: 18.4227045), logoURL: "https://robohash.org/123.png", desc: "xx", date: NSDate(), favorite: false)
+//        
+//        let place3 = Place(title: "Lion's Head", coordinate: CLLocationCoordinate2D(latitude: -33.934722,longitude: 18.389167), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
+//        
+//        let place4 = Place(title: "Never@Home", coordinate: CLLocationCoordinate2D(latitude: -33.907772,longitude: 18.40918), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
+//        
+//        let place5 = Place(title: "Boulder Beach", coordinate: CLLocationCoordinate2D(latitude: -34.1972,longitude: 18.4513), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
+//        
+//        let place6 = Place(title: "Randy Warthog", coordinate: CLLocationCoordinate2D(latitude: -33.907772,longitude: 18.40918), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
+//        
+//        let place7 = Place(title: "Aquila Private Game Reserve", coordinate: CLLocationCoordinate2D(latitude: -33.3536,longitude: 19.9365), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
+//        
+//        let place8 = Place(title: "V&A Market", coordinate: CLLocationCoordinate2D(latitude: -33.9060766,longitude: 18.423153800000023), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
+//                //place8.logoURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Flag_of_Afghanistan_(1880%E2%80%931901).svg/2000px-Flag_of_Afghanistan_(1880%E2%80%931901).svg.png"
+//        
+//        
+//        let place9 = Place(title: "Shark Alley", coordinate: CLLocationCoordinate2D(latitude: -34.57697367552366,longitude: 19.345378875732422), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
+//        //place9.logoURL = "https://chasingpisces.files.wordpress.com/2009/11/south-africa-001.jpg"
+//        
+//        let place10 = Place(title: "University of Michigan", coordinate: CLLocationCoordinate2D(latitude: 42.2780,longitude: -83.7382), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
+//        //place10.logoURL = "https://en.wikipedia.org/wiki/University_of_Michigan#/media/File:Umichigan_color_seal.png"
         
-        let place2 = Place(title: "Truth Coffee", coordinate: CLLocationCoordinate2D(latitude: -33.9281976,longitude: 18.4227045), logoURL: "https://robohash.org/123.png", desc: "xx", date: NSDate(), favorite: false)
         
-        let place3 = Place(title: "Lion's Head", coordinate: CLLocationCoordinate2D(latitude: -33.934722,longitude: 18.389167), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
-        
-        let place4 = Place(title: "Never@Home", coordinate: CLLocationCoordinate2D(latitude: -33.907772,longitude: 18.40918), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
-        
-        let place5 = Place(title: "Boulder Beach", coordinate: CLLocationCoordinate2D(latitude: -34.1972,longitude: 18.4513), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
-        
-        let place6 = Place(title: "Randy Warthog", coordinate: CLLocationCoordinate2D(latitude: -33.907772,longitude: 18.40918), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
-        
-        let place7 = Place(title: "Aquila Private Game Reserve", coordinate: CLLocationCoordinate2D(latitude: -33.3536,longitude: 19.9365), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
-        
-        let place8 = Place(title: "V&A Market", coordinate: CLLocationCoordinate2D(latitude: -33.9060766,longitude: 18.423153800000023), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
-                //place8.logoURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Flag_of_Afghanistan_(1880%E2%80%931901).svg/2000px-Flag_of_Afghanistan_(1880%E2%80%931901).svg.png"
-        
-        
-        let place9 = Place(title: "Shark Alley", coordinate: CLLocationCoordinate2D(latitude: -34.57697367552366,longitude: 19.345378875732422), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
-        //place9.logoURL = "https://chasingpisces.files.wordpress.com/2009/11/south-africa-001.jpg"
-        
-        let place10 = Place(title: "University of Michigan", coordinate: CLLocationCoordinate2D(latitude: 42.2780,longitude: -83.7382), logoURL: nil, desc: "xx", date: NSDate(), favorite: false)
-        //place10.logoURL = "https://en.wikipedia.org/wiki/University_of_Michigan#/media/File:Umichigan_color_seal.png"
-        
-        
-        return [place, place3, place2, place4, place5, place6, place7, place8, place9, place10]
+        //return [place]
+        return []
     }
     
 //    class func aPlace () -> Place {

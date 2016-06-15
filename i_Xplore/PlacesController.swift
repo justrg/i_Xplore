@@ -11,7 +11,7 @@ import MapKit
 
 class PlacesController {
     
-    var placeList: [Place] = Place.placeList()
+    private var placeList: [Place] = []
     
     var coordinate: CLLocationCoordinate2D?
     var title: String?
@@ -44,16 +44,22 @@ class PlacesController {
         
         placeList.append(newPlace)
         
-        //var  = User(firstName: nameField.text, email: emailField.text)
-        //PersistenceManager.saveObject(person, fileName: "pathHere")
+        PersistenceManager.saveNSArray(placeList, fileName: "array")
 
     }
     
     private func readPlacesFromMemory(){
+        let places = PersistenceManager.loadNSArray("array") as? [Place]
+        if places == nil {
+            self.placeList += []
+        }
+        else{
+            self.placeList += places!
+        }
         
     }
     
-    class func getPlaces() ->  [Place]{
+    func getPlaces() ->  [Place]{
         
         if PlacesController.sharedInstance.placeList.isEmpty{
             PlacesController.sharedInstance.readPlacesFromMemory()

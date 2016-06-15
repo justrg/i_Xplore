@@ -29,15 +29,12 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         setupMapView()
         setupTableView()
         
-        //let plusButtonFrame = CGRectMake(50, 50, 0, 0)
         let plusButton = UIBarButtonItem(title: "+", style: .Done, target: self, action: "presentNewPlace")
-        //plusButton.title = "+"
-        //self.view.addSubview(plusButton)
         self.navigationItem.rightBarButtonItem = plusButton
     }
     
     override func viewWillAppear(animated: Bool) {
-        placeList = PlacesController.getPlaces()
+        placeList = PlacesController.sharedInstance.getPlaces()
     }
     
     func presentNewPlace(){
@@ -122,23 +119,11 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let span = MKCoordinateSpanMake(0.01, 0.01)
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: mapCenterCoordinateAfterMove.latitude, longitude: mapCenterCoordinateAfterMove.longitude), span: span)
         mapView.setRegion(region, animated: true)
-        
-        
-        //        self.mapView.centerCoordinate = mapCenterCoordinateAfterMove
-        //
-        //        mapView.region.center.latitude = spot.coordinate.latitude
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    
-//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == UITableViewCellEditingStyle.Delete {
-//            placeList.removeAtIndex(indexPath.row)
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-//        }
-//    }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let deleteRow = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
