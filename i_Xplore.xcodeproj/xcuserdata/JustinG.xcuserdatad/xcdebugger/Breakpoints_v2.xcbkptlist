@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "i_Xplore/NewPlaceViewController.swift"
-            timestampString = "487627111.82572"
+            timestampString = "487677072.976484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "saveButtonPressed(_:)"
             landmarkType = "5">
          </BreakpointContent>

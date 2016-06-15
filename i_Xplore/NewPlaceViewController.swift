@@ -8,13 +8,16 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class NewPlaceViewController: UIViewController {
+class NewPlaceViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var latitudeField: UITextField!
     @IBOutlet weak var longitudeField: UITextField!
+    
+    var locationManager: CLLocationManager?
     
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
@@ -38,6 +41,12 @@ class NewPlaceViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager = CLLocationManager()
+        locationManager!.delegate = self
+        locationManager!.requestWhenInUseAuthorization()
+        locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager!.startUpdatingLocation()
 
         // Do any additional setup after loading the view.
     }
@@ -47,6 +56,23 @@ class NewPlaceViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse {
+            if CLLocationManager.isMonitoringAvailableForClass(CLBeaconRegion.self) {
+                if CLLocationManager.isRangingAvailable() {
+                    // do stuff
+                }
+            }
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        latitudeField.text = String(format:"%f", locValue.latitude)
+        longitudeField.text = String(format:"%f", locValue.longitude)
+    }
+
 
     /*
     // MARK: - Navigation
