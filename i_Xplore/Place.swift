@@ -18,13 +18,10 @@ class Place: NSObject, MKAnnotation, NSCoding  {
     var date: NSDate?
     var favorite: Bool = false
     
-    override init()  {
-        
-    }
     
     required init(title:String?, coordinate: CLLocationCoordinate2D, logoURL:String?, desc:String?, date:NSDate?, favorite: Bool) {
-        self.title = title
         self.coordinate = coordinate
+        self.title = title
         self.logoURL = logoURL
         self.desc = desc
         self.date = date
@@ -39,6 +36,7 @@ class Place: NSObject, MKAnnotation, NSCoding  {
         aCoder.encodeObject(self.logoURL, forKey: "logoURL")
         aCoder.encodeObject(self.desc, forKey: "description")
         aCoder.encodeObject(self.date, forKey: "date")
+        aCoder.encodeObject(self.favorite, forKey: "favorite")
         
     }
     
@@ -48,12 +46,7 @@ class Place: NSObject, MKAnnotation, NSCoding  {
         let logoURL = aDecoder.decodeObjectForKey("logoURL") as? String
         let description = aDecoder.decodeObjectForKey("description") as? String
         let date = aDecoder.decodeObjectForKey("date") as? NSDate
-        
-        var favorite = false
-        if let favoriteObtainedFromPersistence = aDecoder.decodeObjectForKey("favorite") as? Bool {
-            favorite = favoriteObtainedFromPersistence
-        }
-        
+        let favorite = aDecoder.decodeObjectForKey("favorite") as? Bool
         let lat = aDecoder.decodeObjectForKey("lat") as? Double
         let log = aDecoder.decodeObjectForKey("log") as? Double
         var coordinate = CLLocationCoordinate2D()
@@ -64,14 +57,23 @@ class Place: NSObject, MKAnnotation, NSCoding  {
             coordinate.longitude = longit
         }
         
-        
-        self.init(title: title, coordinate: coordinate, logoURL: logoURL, desc: description, date: date, favorite: favorite)
+        self.init(title: title, coordinate: coordinate, logoURL: logoURL, desc: description, date: date, favorite: favorite!)
         
     }
     
-    class func placeList() -> [Place] {
+  //  class func placeList() -> [Place] {
         
-        let place = Place(title: "Workshop 17", coordinate: CLLocationCoordinate2D(latitude: -33.906764,longitude: 18.4164983), logoURL: "https://avatars1.githubusercontent.com/u/7220596?v=3&s=200", desc: "xx", date: NSDate(), favorite: true)
+        //        var plc = Place()
+        //        plc.coordinate = CLLocationCoordinate2D()
+        //        plc.coordinate.latitude = 2.22222
+        //        plc.coordinate.longitude = 2.22222
+        //        PersistenceManager.saveObject(plc, fileName: "test")
+        //        let loadIt = PersistenceManager.loadObject("test") as? Place
+        //        print(loadIt?.coordinate )
+        
+        
+        
+      //  let place = Place(title: "Workshop 17", coordinate: CLLocationCoordinate2D(latitude: -33.906764,longitude: 18.4164983), logoURL: "https://avatars1.githubusercontent.com/u/7220596?v=3&s=200", desc: "default", date: NSDate(), favorite: true)
 //        
 //        let place2 = Place(title: "Truth Coffee", coordinate: CLLocationCoordinate2D(latitude: -33.9281976,longitude: 18.4227045), logoURL: "https://robohash.org/123.png", desc: "xx", date: NSDate(), favorite: false)
 //        
@@ -96,24 +98,10 @@ class Place: NSObject, MKAnnotation, NSCoding  {
 //        //place10.logoURL = "https://en.wikipedia.org/wiki/University_of_Michigan#/media/File:Umichigan_color_seal.png"
         
         
-        //return [place]
-        return []
-    }
-    
-//    class func aPlace () -> Place {
-//        
-//        let place = Place ()
-//        place.title = "Workshop 17"
-//        place.coordinate = CLLocationCoordinate2D(latitude: -33.906764,longitude: 18.4164983)
-//        return place
-//    }
+    //    return [place]
+   // }
     
 }
-
-//let mapCenterCoordinateAfterMove = CLLocationCoordinate2D(latitude: self.spotList[indexPath.row].coordinate.latitude,longitude: self.spotList[indexPath.row].coordinate.longitude)
-//        let adjustedRegion = mapView.regionThatFits(MKCoordinateRegionMake(mapCenterCoordinateAfterMove,
-//MKCoordinateSpanMake(0.01, 0.01)))
-//        mapView.setRegion(adjustedRegion, animated: true)
 
 extension UIImageView   {
     

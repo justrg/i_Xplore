@@ -28,12 +28,13 @@ class NewPlaceViewController: UIViewController, CLLocationManagerDelegate {
         location.longitude = log! as CLLocationDegrees
         //var newPlace = Place(title: titleField.text, coordinate: location, logoURL: nil, desc: descriptionField.text, date: NSDate(), favorite: false)
         
-        if title != "" {
-            PlacesController.sharedInstance.addPlace(title, coordinates: location, logoURL: nil, date: NSDate(), description: descriptionField.text)
+        if titleField.text != "" {
+            PlacesController.sharedInstance.addPlace(titleField.text, coordinates: location, logoURL: nil, date: NSDate(), description: descriptionField.text)
         }
         else{
             print("Shits broke man")
         }
+        dismissViewControllerAnimated(true, completion: nil)
         
     }
     @IBAction func cancelPressed(sender: UIButton) {

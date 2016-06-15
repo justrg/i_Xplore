@@ -32,13 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = self.mapNavigationController
         self.window?.makeKeyAndVisible()
 
-//        var plc = Place()
-//        plc.coordinate = CLLocationCoordinate2D()
-//        plc.coordinate.latitude = 2.22222
-//        plc.coordinate.longitude = 2.22222
-//        PersistenceManager.saveObject(plc, fileName: "test")
-//        let loadIt = PersistenceManager.loadObject("test") as? Place
-//        print(loadIt?.coordinate )
+
         
         return true
     }

@@ -30,7 +30,8 @@ class PersistenceManager {
     
     class func saveNSArray(arrayToSave: NSArray, fileName:String) {
         let file = documentsDirectory().stringByAppendingPathComponent(fileName)
-        NSKeyedArchiver.archiveRootObject(arrayToSave, toFile: file)
+        print (NSKeyedArchiver.archiveRootObject(arrayToSave, toFile: file))
+        
     }
     
     class func loadNSArray(fileName:String) -> NSArray? {

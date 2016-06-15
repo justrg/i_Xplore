@@ -33,14 +33,9 @@ class PlacesController {
         return Static.instance!
     }
     
-//    var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
-//    var title: String? = ""
-//    var logoURL:String?
-//    var desc: String?
-//    var date: NSDate = NSDate()
     
     func addPlace( title: String?, coordinates: CLLocationCoordinate2D, logoURL: String?, date: NSDate?, description: String?){
-        var newPlace = Place(title: title, coordinate: coordinates, logoURL: logoURL, desc: "xx", date: date, favorite: false)
+        var newPlace = Place(title: title, coordinate: coordinates, logoURL: logoURL, desc: description, date: date, favorite: false)
         
         placeList.append(newPlace)
         
@@ -48,12 +43,11 @@ class PlacesController {
 
     }
     
+    //new function to update favorite
+    
     private func readPlacesFromMemory(){
-        let places = PersistenceManager.loadNSArray("array") as? [Place]
-        if places == nil {
-            self.placeList += []
-        }
-        else{
+        var places = PersistenceManager.loadNSArray("array") as? [Place]
+        if places != nil {
             self.placeList += places!
         }
         
@@ -63,6 +57,7 @@ class PlacesController {
         
         if PlacesController.sharedInstance.placeList.isEmpty{
             PlacesController.sharedInstance.readPlacesFromMemory()
+            //return Place.placeList()
             return PlacesController.sharedInstance.placeList
         }
         else{

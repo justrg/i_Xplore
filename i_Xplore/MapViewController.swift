@@ -22,6 +22,12 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let list = PersistenceManager.loadNSArray("array") as? [Place]
+        
+        if (list != nil) {
+            placeList = list!
+        }
+        
         locationManager = CLLocationManager()
         locationManager!.delegate = self
         locationManager!.requestWhenInUseAuthorization()
@@ -33,13 +39,12 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         setupMapView()
         setupTableView()
         
-        let plusButton = UIBarButtonItem(title: "+", style: .Done, target: self, action: "presentNewPlace")
+        let plusButton = UIBarButtonItem(title: "+", style: .Done, target: self, action: #selector(self.presentNewPlace))
+        
         self.navigationItem.rightBarButtonItem = plusButton
     }
     
-    override func viewWillAppear(animated: Bool) {
-        placeList = PlacesController.sharedInstance.getPlaces()
-    }
+
     
     func presentNewPlace(){
         let vc = NewPlaceViewController()
@@ -63,9 +68,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-//     let mvtc: UINib
-//            tableView.registerNib(nibName: "MapTableViewCell", bundle: nil), forCellReuseIdentifier: "MapTableViewCell")
-    self.tableView.registerClass(CustomTableViewCell.self, forCellReuseIdentifier: "CustomTableViewCell")
+        self.tableView.registerClass(CustomTableViewCell.self, forCellReuseIdentifier: "CustomTableViewCell")
     }
     
     
@@ -79,9 +82,10 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as! CustomTableViewCell
         let place = placeList[indexPath.row]
         cell.label!.text = place.title
+        cell.desc!.text = place.desc
         
         
-        if place.favorite {
+        if (place.favorite) {
             cell.label?.textColor = UIColor.yellowColor()
         }
         else{
@@ -103,6 +107,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         //Styling of table cells
         if indexPath.row % 2 == 1{
             cell.backgroundColor = UIColor(red: 228/255, green: 229/255, blue: 224/255, alpha: 1.0) /* #e4e5e0  Very light gray color */
+            cell.desc?.backgroundColor = UIColor(red: 228/255, green: 229/255, blue: 224/255, alpha: 1.0) /* #e4e5e0  Very light gray color */
                 
                 //UIColor(red: 230/255, green: 231/255, blue: 247/255, alpha: 1.0) /* #e6e7f7 Light blue color*/
                 //UIColor(red: 228/255, green: 229/255, blue: 224/255, alpha: 1.0) /* #e4e5e0  Very light gray color */
@@ -138,8 +143,28 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         deleteRow.backgroundColor = UIColor.redColor()
         
         let favoriteRow = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
+            
+            
             print("Favorite tapped")
-            self.placeList[indexPath.row].favorite = true
+
+            var array = PersistenceManager.loadNSArray("array") as! [Place]
+            
+            let place = array[indexPath.row]
+            
+            place.favorite = true
+            
+            array.removeAtIndex(indexPath.row)
+            array.insert(place, atIndex: indexPath.row)
+
+            PersistenceManager.saveNSArray(array, fileName: "array")
+            
+            for element in array {
+                print(element.title)
+                print(element.favorite)
+            }
+            
+            
+            
         }
         favoriteRow.backgroundColor = UIColor.orangeColor()
         
@@ -161,26 +186,14 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         //let place = placeList[indexPath.row]
-        
-        
         return 88
-//        let row = indexPath.row
-//        print ()
-//        if place.ratable{
-//            return 88
-//        }
-//        else{
-//            
-//            return 44
-//        }
-//        return 0
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedWhenInUse {
             if CLLocationManager.isMonitoringAvailableForClass(CLBeaconRegion.self) {
                 if CLLocationManager.isRangingAvailable() {
-                    // do stuff
+
                 }
             }
         }

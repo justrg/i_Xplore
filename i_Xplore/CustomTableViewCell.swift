@@ -14,6 +14,7 @@ class CustomTableViewCell: UITableViewCell {
     var iView: UIImageView?
     var view: UIView?
     var date: UILabel?
+    var desc: UILabel?
     
         
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -35,6 +36,10 @@ class CustomTableViewCell: UITableViewCell {
         let dateFrame = CGRectMake(116, 25, 150, 21)
         date = UILabel(frame: dateFrame)
         self.addSubview(date!)
+        
+        let desFrame = CGRectMake(116, 45, 150, 21)
+        desc = UILabel(frame: desFrame)
+        self.addSubview(desc!)
     }
     
     
